@@ -1,0 +1,10 @@
+# The Winding Number Rule
+
+This is a really interesting algorithm that I came across while looking through the java.awt.geom.GeneralPath source code.  It's used primarily to determine whether a given point is inside the shape bounded by a curve, and it's known as the *winding number rule*.  I think the term *winding rule* normally refers to the *non-zero winding number rule* algorithm, but I'm actually going to discuss the *even-odd rule* and use that in impementation because it's simpler conceptually.
+
+Basically, a point is inside the curve if its *winding number* is **odd**; if it's **even**, the point lies outside the curve (even if it's completely enveloped by the curve, which is important).
+
+[See Wikipedia's article on Winding Numbers.](http://en.wikipedia.org/wiki/Winding_number)
+[Nice explanation here too](http://blogs.adobe.com/webplatform/2013/01/30/winding-rules-in-canvas/)
+
+In order to properly test the function that implemented this, I had to understand how it worked.  I've included a terrible photo of my whiteboard.  It turns out if you shift the shape so that the point in question is the origin, it makes intersection calculations really simple because you can just test for x or y intercepts.
